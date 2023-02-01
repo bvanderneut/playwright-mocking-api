@@ -12,12 +12,12 @@ export class BasePage {
   async setupBrowser() {
     console.log("setupBrowser");
 
-    await this.page.route("**/*", (request) => {
-      if (request.request().resourceType() === "image") {        
-        return request.abort();
+    await this.page.route("**/*", (route) => {
+      if (route.request().resourceType() === "image") {
+        return route.abort();
       }
 
-      return request.continue();
+      return route.continue();
     });
   }
 
