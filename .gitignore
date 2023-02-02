@@ -1,3 +1,4 @@
 test-results/
-playwright-reports/
+playwright-report/
 node_modules/
+storageState.json

@@ -8,14 +8,16 @@ const base = require('./playwright-base');
  */
 const config: PlaywrightTestConfig = {
   ...base,
+  globalSetup: require.resolve("./global-setup"),
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: 'test-results/',
-  snapshotPathTemplate: '{testDir}/__screenshots__/{testFilePath}/{arg}{ext}',
+  outputDir: "test-results/",
+  snapshotPathTemplate: "{testDir}/__screenshots__/{testFilePath}/{arg}{ext}",
   projects: [
     {
-      name: 'run-tests',
-      testMatch: ['/tests/*.spec.ts'],
-    },    
+      name: "run-tests",
+      testMatch: ["/tests/*.spec.ts"],
+      use: { mockApi: true },
+    },
   ],
 };
 
